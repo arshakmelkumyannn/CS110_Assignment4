@@ -1,9 +1,13 @@
 function factorial(n) {
-    let ans = 1;
-    for (let i = 2; i <= n; i++) {
-        ans *= i;
+    if (n <= 2) {
+        return n;
+    } else {
+        let ans = 1;
+        for (let i = 2; i <= n; i++) {
+            ans *= i;
+        }
+        return ans;
     }
-    return ans;
 }
 // console.log(factorial(7));
 
@@ -29,20 +33,20 @@ function gcd(num1, num2) {
     return ans;
 }
 
-// console.log(gcd(10234, 124));
+// console.log(gcd(4, 124));
 
-function hcf(num1, num2) {
-    return gcd(num1, num2);
+function lcm(num1, num2) {
+    return (num1 * num2) / gcd(num1, num2);
 }
 
-// console.log(hcf(1024, 124));
+// console.log(lcm(1024, 124));
 
 function toHexadecimal(num) {
     let hex = "";
-    let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+    let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
     let ans = "";
     while (num) {
-        hex += arr[(num % 16) - 1];
+        hex += arr[num % 16];
         num = Math.floor(num / 16);
     }
     for (let i = hex.length - 1; i >= 0; i--) {
@@ -51,11 +55,11 @@ function toHexadecimal(num) {
     return ans;
 }
 
-// console.log(toHexadecimal(3225));
+// console.log(toHexadecimal(10000));
 
 module.exports = {
     factorial,
     gcd,
-    hcf,
+    lcm,
     toHexadecimal,
 };
