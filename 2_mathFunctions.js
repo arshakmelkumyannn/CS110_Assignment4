@@ -3,9 +3,11 @@ function factorial(n) {
         return n;
     } else {
         let ans = 1;
+
         for (let i = 2; i <= n; i++) {
             ans *= i;
         }
+
         return ans;
     }
 }
@@ -13,27 +15,26 @@ function factorial(n) {
 
 function gcd(num1, num2) {
     let start, rem, ans;
+
     if (num1 == num2) {
         return num1;
-    } else if (num1 > num2) {
-        start = num2;
-        rem = num1 % num2;
-        ans = num2;
     } else {
-        start = num1;
-        rem = num2 % num1;
-        ans = num1;
+        start = Math.min(num1, num2);
+        rem = Math.max(num1, num2) % Math.min(num1, num2);
+        ans = start;
     }
+
     while (rem != 0) {
         let x = rem;
         rem = start % rem;
         start = x;
         ans = x;
     }
+
     return ans;
 }
 
-// console.log(gcd(4, 124));
+// console.log(gcd(1022, 124));
 
 function lcm(num1, num2) {
     return (num1 * num2) / gcd(num1, num2);
@@ -45,13 +46,16 @@ function toHexadecimal(num) {
     let hex = "";
     let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
     let ans = "";
+
     while (num) {
         hex += arr[num % 16];
         num = Math.floor(num / 16);
     }
+
     for (let i = hex.length - 1; i >= 0; i--) {
         ans += hex[i];
     }
+
     return ans;
 }
 
